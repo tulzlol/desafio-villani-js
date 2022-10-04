@@ -46,7 +46,7 @@ const modificarCantidad = (tipo, id, operacion) => {
         cantidad = cantidad + 1;
     } else if(operacion == 'del') {
         cantidad = cantidad - 1;
-        if (cantidad < 1) cantidad = 1;
+        if (cantidad = cantidad < 1 ? 1 : cantidad);
 
     } else {
         if (cantidad < 1) cantidad = 1;
