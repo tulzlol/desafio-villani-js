@@ -22,6 +22,10 @@ const productos = [producto1, producto2, producto3, producto4, producto5, produc
 
 let carrito = [];
 
+// FUNCION VACIAR
+
+
+const toggleVaciarButton = () => vaciarCarrito.style.display = carrito.length === 0 ? "none" : "";
 
 // FUNCION CANTIDADES , RECIBE UN TIPO
 
@@ -99,7 +103,10 @@ productos.forEach((producto) => {
     cardBody.appendChild(sectionBtn);
     let btn = document.createElement("a");
     btn.id = `btnAgregar${producto.id}`;
-    btn.className = "btn btn-primary";
+    btn.addEventListener("click", () => {
+        confirmCartAlert("Se ha agregado el producto al carrito.");
+    })
+    btn.className = "btn btn-primary mt-3";
     btn.innerText = "Agregar al carrito";
     btn.onclick = () => agregarAlCarrito(producto.id);
     sectionBtn.appendChild(btn);
@@ -135,6 +142,7 @@ verCarrito.addEventListener("click", actualizarCarrito);
 
 function actualizarCarrito() {
     localStorage.setItem("carritoStorage", JSON.stringify(carrito));
+    toggleVaciarButton();
     // vaciamos el contenedor
     contenedorCarrito.innerHTML = '';
     // iteración en el carrito, producto a producto
@@ -162,8 +170,12 @@ function actualizarCarrito() {
         cardBody.appendChild(creadorCantidades("c", producto));
         let button = document.createElement("button");
         button.onclick = () => eliminarDelCarrito(producto.id);
+        button.id = "buttonDel"
+        button.addEventListener("click", () => {
+            confirmCartAlert("Se ha eliminado el producto del carrito.")
+        })
         button.innerText = "Eliminar del carrito";
-        button.className = "btn btn-primary";
+        button.className = "btn btn-primary mt-3";
         cardBody.appendChild(button);
         contenedorCarrito.appendChild(div);
 
@@ -189,10 +201,34 @@ const eliminarDelCarrito = (id) => {
 
 // VACIAR CARRITO 
 
+
 const vaciarCarrito = document.getElementById("vaciarCarrito");
+
+
 vaciarCarrito.addEventListener("click", () => {
-    carrito = [];
-    actualizarCarrito();
+    Swal.fire({
+        width: "25em",
+        icon: 'warning',
+        title: '¿Esta seguro de querer vaciar el carrito?',
+        confirmButtonText: "Aceptar",
+        confirmButtonColor: "green",
+        showConfirmButton: true,
+        cancelButtonText: "Cancelar",
+        showCancelButton: true,
+        cancelButtonColor: "red",
+    }).then((result) => {
+        if(result.isConfirmed) {
+            carrito = [];
+            Swal.fire({
+                width: "25em",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 1500,
+            })
+            actualizarCarrito();
+        }
+    })
+
 });
 
 
@@ -215,3 +251,15 @@ const cargarCarrito = () => {
 }
 cargarCarrito()
 
+function confirmCartAlert(texto) {
+    Swal.fire({
+        width: "25em",
+        position: 'bottom-end',
+        icon: 'success',
+        html: `<h5>${texto}</h5>`,
+        showConfirmButton: false,
+        backdrop: false,
+        timer: 2500,
+        timerProgressBar: true,
+    })
+}

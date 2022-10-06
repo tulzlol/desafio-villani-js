@@ -10,6 +10,29 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,700&display=swap');
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.navbar {
+    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+    z-index: 500;
+}
+
+.navbar-brand{
+    color: rgb(255 251 251 / 90%)!important;
+}
+
+.nav-link{
+    color: white!important;
+}
+
 a {
     margin-left: 1vh;
     margin-right: 1vh;
@@ -40,4 +63,8 @@ a {
 
 .card-img-top {
     max-height: 20vh !important;
+}
+
+.footerBc{
+    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%)!important;
 }
