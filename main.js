@@ -25,7 +25,6 @@ let carrito = [];
 // FUNCION VACIAR
 
 
-const toggleComprarButton = () => comprarCarrito.style.display = carrito.length === 0 ? "none" : "";
 const toggleVaciarButton = () => vaciarCarrito.style.display = carrito.length === 0 ? "none" : "";
 
 // FUNCION CANTIDADES , RECIBE UN TIPO
@@ -107,7 +106,7 @@ productos.forEach((producto) => {
     btn.addEventListener("click", () => {
         confirmCartAlert("Se ha agregado el producto al carrito.");
     })
-    btn.className = "btn btn-primary btn-grad mt-3";
+    btn.className = "btn btn-primary btn-add mt-3";
     btn.innerText = "Agregar al carrito";
     btn.onclick = () => agregarAlCarrito(producto.id);
     sectionBtn.appendChild(btn);
@@ -176,7 +175,7 @@ function actualizarCarrito() {
             confirmCartAlert("Se ha eliminado el producto del carrito.")
         })
         button.innerText = "Eliminar del carrito";
-        button.className = "btn btn-primary mt-3";
+        button.className = "btn btn-primary mt-3 btn-del-carrito";
         cardBody.appendChild(button);
         contenedorCarrito.appendChild(div);
 

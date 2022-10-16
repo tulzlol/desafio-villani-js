@@ -19,15 +19,15 @@ input[type=number] {
 }
 
 body {
-    background-image: url(./img/bodyback.jpg);    
+    background-image: url(./img/bodyback.jpg);
     background-size: contain;
 }
 
 .navbar {
     background: #000000;
-    background: -webkit-linear-gradient(to right, #434343, #000000);  
-    background: linear-gradient(to right, #434343, #000000); 
-    
+    background: -webkit-linear-gradient(to right, #434343, #000000);
+    background: linear-gradient(to right, #434343, #000000);
+
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
     z-index: 500;
 }
@@ -41,7 +41,7 @@ body {
 }
 
 a {
-    font-size: small!important;
+    font-size: small !important;
     margin-left: 1vh;
     margin-right: 1vh;
 }
@@ -51,41 +51,26 @@ a {
 }
 
 
-.btn-grad {
+.btn-del-carrito {
     background-image: linear-gradient(to right, #232526 0%, #414345 51%, #232526 100%);
     margin: 10px;
     padding: 15px 45px;
     text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
+    transition: 0.5s !important;
     background-size: 200% auto;
     color: white;
     box-shadow: 0 0 20px rgba(4, 4, 4, 0.075);
     border-radius: 4px;
-    border-color: black!important;
+    border-color: black !important;
     display: block;
 }
 
-.btn-grad:hover {
-    background-position: right center!important;
+.btn-del-carrito:hover {
+    background-position: right center !important;
     color: rgba(0, 0, 0, 0.214);
     text-decoration: none;
 }
 
-.slide1 {
-    background-image: url(./img/carousel1.jpg);
-    background-size: cover;
-}
-
-.slide2 {
-    background-image: url(./img/carousel2.jpg);
-    background-size: cover;
-}
-
-.slide3 {
-    background-image: url(./img/carousel3.jpg);
-    background-size: cover;
-}
 
 .bodyStyles {
     background-color: rgb(255, 255, 255);
@@ -96,14 +81,14 @@ a {
 }
 
 .img-thumbnail {
-    border: none!important;
+    border: none !important;
 }
 
 .footerBc {
-    background: #000000; 
-    background: -webkit-linear-gradient(to right, #434343, #000000); 
-    background: linear-gradient(to right, #434343, #000000); 
-    
+    background: #000000;
+    background: -webkit-linear-gradient(to right, #434343, #000000);
+    background: linear-gradient(to right, #434343, #000000);
+
 }
 
 #contenedorClima {
@@ -112,30 +97,74 @@ a {
     justify-content: space-around;
     flex-direction: row;
     color: white;
-    background: #000000;  
-    background: -webkit-linear-gradient(to right, #434343, #000000);  
-    background: linear-gradient(to right, #434343, #000000); 
+    background: #000000;
+    background: -webkit-linear-gradient(to right, #434343, #000000);
+    background: linear-gradient(to right, #434343, #000000);
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
 }
 
 .carousel-caption {
-    padding-bottom: 35vh!important;
+    padding-bottom: 35vh !important;
 }
 
-.text-white{
+.text-white {
     color: white;
 }
 
-#contenedorProductos img{
+#contenedorProductos img {
     filter: grayscale();
     transition: filter 1.4s ease-in-out;
 }
 
-#contenedorProductos:hover img{
+#contenedorProductos:hover img {
     filter: none;
 }
 
 #contenedorClima {
     background-image: url(./img/climaback.jpg);
     background-size: cover;
+}
+
+
+.btn-add {
+    background-image: linear-gradient(to right, #4b6cb7 0%, #182848  51%, #4b6cb7  100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    font-size: medium!important;
+    transition: 0.5s !important;
+    background-size: 200% auto;
+    color: rgba(20, 20, 20, 0.692);
+    box-shadow: 0 0 20px rgba(27, 27, 27, 0.274);
+    border-radius: 10px;
+    border-color: rgba(0, 0, 0, 0.527) !important;
+    display: block;
+}
+
+
+.btn-add:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.btn-comprar {
+    background-image: linear-gradient(to right, #1e3c72 0%, #2a5298  51%, #1e3c72  100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    transition: 0.75s!important;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px rgba(12, 219, 174, 0.13);
+    border-radius: 10px;
+    border-color: #023b0a!important;
+    display: block;
+}
+
+.btn-comprar:hover {
+    background-position: right center;
+    color: rgb(10, 10, 10);
+    text-decoration: none;
 }
