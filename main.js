@@ -9,14 +9,14 @@ class Producto {
     }
 }
 
-const producto1 = new Producto(1, "Crossaint", "Crossaint de jamon y queso", 250, 1);
-const producto2 = new Producto(2, "Medialuna", "Medialuna de grasa", 110, 1);
-const producto3 = new Producto(3, "Pan", "1kg de pan", 250, 1);
-const producto4 = new Producto(4, "Cafe", "Cafe negro", 300, 1);
-const producto5 = new Producto(5, "Muffin", "Muffin de chocolate", 350, 1);
-const producto6 = new Producto(6, "Batido", "Batido de frutilla", 400, 1);
-const producto7 = new Producto(7, "Tostado", "Tostado de JyQ", 350, 1);
-const producto8 = new Producto(8, "Sandwich de miga", "Sandwich de JyQ", 250, 1);
+const producto1 = new Producto(1, "TRAIL 30 LTS.", "Mochila", 39399, 1);
+const producto2 = new Producto(2, "HANCKOK 40 LTS.", "Mochila", 48932, 1);
+const producto3 = new Producto(3, "CUBRE MOCHILA", "Accesorio", 5698, 1);
+const producto4 = new Producto(4, "AVANT 35 LTS.", "Mochila", 35686, 1);
+const producto5 = new Producto(5, "DAKOTA 68 LTS.", "Mochila de montaña", 60267, 1);
+const producto6 = new Producto(6, "NOVUS 65 LTS.", "Mochila de montaña", 63299, 1);
+const producto7 = new Producto(7, "DAKOTA 80 LTS.", "Mochila de montaña", 70423, 1);
+const producto8 = new Producto(8, "LUXON 50 LTS.", "Mochila", 65499, 1);
 
 const productos = [producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8];
 
@@ -25,6 +25,7 @@ let carrito = [];
 // FUNCION VACIAR
 
 
+const toggleComprarButton = () => comprarCarrito.style.display = carrito.length === 0 ? "none" : "";
 const toggleVaciarButton = () => vaciarCarrito.style.display = carrito.length === 0 ? "none" : "";
 
 // FUNCION CANTIDADES , RECIBE UN TIPO
@@ -45,10 +46,10 @@ const creadorCantidades = (tipo, producto) => {
 
 const modificarCantidad = (tipo, id, operacion) => {
     let inputCantidad = document.getElementById("cantidad" + tipo + id);
-    let cantidad =  parseInt(inputCantidad.value);
-    if(operacion == "add") {
+    let cantidad = parseInt(inputCantidad.value);
+    if (operacion == "add") {
         cantidad = cantidad + 1;
-    } else if(operacion == 'del') {
+    } else if (operacion == 'del') {
         cantidad = cantidad - 1;
         if (cantidad = cantidad < 1 ? 1 : cantidad);
 
@@ -56,10 +57,10 @@ const modificarCantidad = (tipo, id, operacion) => {
         if (cantidad < 1) cantidad = 1;
     }
     inputCantidad.value = cantidad;
-    if(tipo == "p") { // producto
+    if (tipo == "p") { // producto
         const producto = productos.find(e => e.id == id);
         producto.cantidad = cantidad;
-    } else if(tipo == "c") { // carrito
+    } else if (tipo == "c") { // carrito
         const productoEnCarrito = carrito.find(e => e.id == id);
         productoEnCarrito.cantidad = cantidad;
         actualizarCarrito();
@@ -106,7 +107,7 @@ productos.forEach((producto) => {
     btn.addEventListener("click", () => {
         confirmCartAlert("Se ha agregado el producto al carrito.");
     })
-    btn.className = "btn btn-primary mt-3";
+    btn.className = "btn btn-primary btn-grad mt-3";
     btn.innerText = "Agregar al carrito";
     btn.onclick = () => agregarAlCarrito(producto.id);
     sectionBtn.appendChild(btn);
@@ -209,7 +210,7 @@ vaciarCarrito.addEventListener("click", () => {
     Swal.fire({
         width: "25em",
         icon: 'warning',
-        title: '¿Esta seguro de querer vaciar el carrito?',
+        html: `<h4>¿Esta seguro de querer vaciar el carrito?</h4>`,
         confirmButtonText: "Aceptar",
         confirmButtonColor: "green",
         showConfirmButton: true,
@@ -217,7 +218,7 @@ vaciarCarrito.addEventListener("click", () => {
         showCancelButton: true,
         cancelButtonColor: "red",
     }).then((result) => {
-        if(result.isConfirmed) {
+        if (result.isConfirmed) {
             carrito = [];
             Swal.fire({
                 width: "25em",
@@ -263,3 +264,73 @@ function confirmCartAlert(texto) {
         timerProgressBar: true,
     })
 }
+
+
+// COMPRAR CARRITO
+
+const comprarCarrito = document.getElementById("comprarCarrito");
+
+
+
+// API CLIMA
+
+window.addEventListener('load', () => {
+
+    let temperatureValue = document.getElementById('temperature-value');
+    let temperatureDesc = document.getElementById('temperature-desc');
+
+    let location = document.getElementById('location');
+    let iconAnimado = document.getElementById('iconAnimado');
+
+    let vientoVelocidad = document.getElementById('viento-velocidad');
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(posicion => {
+            
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=Cordoba&lang=es&units=metric&appid=fb5feac6509b44b06e8891612ae9b429`;
+            fetch(url)
+                .then(response => { return response.json() })
+                .then(data => {
+
+                    let temp = Math.round(data.main.temp)
+                    temperatureValue.textContent = `${temp} ° C`
+
+                    let desc = data.weather[0].description
+                    temperatureDesc.textContent = desc.toUpperCase()
+                    location.textContent = data.name.toUpperCase()
+
+                    vientoVelocidad.textContent = `${data.wind.speed} m/s`
+
+                    switch (data.weather[0].main) {
+                        case 'Thunderstorm':
+                            iconAnimado.src = 'animated/thunder.svg'
+                            break;
+                        case 'Drizzle':
+                            iconAnimado.src = 'animated/rainy-2.svg'
+                            break;
+                        case 'Rain':
+                            iconAnimado.src = 'animated/rainy-7.svg'
+                            break;
+                        case 'Snow':
+                            iconAnimado.src = 'animated/snowy-6.svg'
+                            break;
+                        case 'Clear':
+                            iconAnimado.src = 'animated/day.svg'
+                            break;
+                        case 'Atmosphere':
+                            iconAnimado.src = 'animated/weather.svg'
+                            break;
+                        case 'Clouds':
+                            iconAnimado.src = 'animated/cloudy-day-1.svg'
+                            break;
+                        default:
+                            iconAnimado.src = 'animated/cloudy-day-1.svg'
+                    }
+
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        })
+    }
+})

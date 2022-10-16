@@ -30,7 +30,10 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav ">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Inicio</a>
+                            <a class="nav-link" href="../index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Carrito</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -52,75 +55,46 @@
 
     <!-- CAROUSEL  -->
 
-    <div id="carouselMain" class="carousel slide" data-bs-ride="true">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-        </div>
+
+    <div id="carouselMain" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active slide3">
-                <img src="..." class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Despeja tu mente</h5>
-                    <p>Contamos con el equipamiento necesario para que puedas relajarte y conectarte con la naturaleza.</p>
-                </div>
+            <div class="carousel-item active slide1">
+                <img src="" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item slide2">
-                <img src="..." class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Disfruta junto a tus seres queridos</h5>
-                    <p>Aprovecha el clima y la naturaleza para disfrutarlo junto a tus familiares o amigos.</p>
-                </div>
+                <img src="" class="d-block w-100" alt="...">
             </div>
-            <div class="carousel-item slide1">
-                <img src="..." class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Vive una aventura</h5>
-                    <p>Nos aseguramos de que cuentes con el equipamiento necesario para que vivas tu aventura.</p>
-                </div>
+            <div class="carousel-item slide3">
+                <img src="" class="d-block w-100" alt="...">
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselMain"
-            data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselMain" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselMain"
-            data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselMain" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <!-- CLIMA -->
 
-    <div id="contenedorClima" class="text-center">
-        <div id="caja1" class="pt-3">
-            <p id="temperature-value"></p>
-            <p id="temperature-desc"></p>
+        <!-- CLIMA -->
+
+        <div id="contenedorClima" class="text-center">
+            <div id="caja1" class="pt-4">
+                <h4 id="temperature-value"></h4>
+                <h5 id="temperature-desc"></h5>
+            </div>
+            <div id="caja2">
+                <h5 class="pt-3" id="location"></h5>
+                <img class="pb-2" id="iconAnimado" src="" alt="" height="86" width="86">
+            </div>
+            <div id="caja3" class="pt-4">
+                <h4>Velocidad del viento</h4>
+                <h5 id="viento-velocidad"></h5>
+            </div>
         </div>
-        <div id="caja2">
-            <img id="iconAnimado" src="" alt="" height="64" width="64">
-            <p class="pb-2" id="location"></p>
-        </div>
-        <div id="caja3" class="pt-3">
-            <p>Velocidad del viento</p>
-            <p id="viento-velocidad"></p>
-        </div>
-    </div>
 
-
-    <!-- CONTENEDOR PRODUCTOS -->
-    <h1 class="text-center mt-4 text-white">PRODUCTOS</h1>
-
-    <section class="container mt-4 gy-3">
-        <div class="row" id="contenedorProductos">
-
-        </div>
-    </section>
 
     <div id="error"></div>
     <!-- CONTENEDOR CARRITO-->
@@ -138,15 +112,15 @@
 
         <!-- TOTAL COMPRA Y VACIAR CARRITO-->
 
-        <h3 class="text-center text-white">Total de la compra: $<span id="totalCompra">0</span> </h3>
+        <h3 class="text-center">Total de la compra: $<span id="totalCompra">0</span> </h3>
 
 
         <div class="container">
-            <button class="btn btn-primary btn-grad " id="comprarCarrito">
+            <button class="btn btn-primary" id="comprarCarrito">
                 Comprar carrito
             </button>
-
-            <button class="btn btn-primary btn-grad " id="vaciarCarrito">
+    
+            <button class="btn btn-primary" id="vaciarCarrito">
                 Vaciar carrito
             </button>
         </div>

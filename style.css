@@ -14,32 +14,62 @@ input[type=number] {
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,700&display=swap');
 
-*{
+* {
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    background-image: url(./img/bodyback.jpg);    
+    background-size: contain;
+}
 
 .navbar {
-    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+    background: #000000;
+    background: -webkit-linear-gradient(to right, #434343, #000000);  
+    background: linear-gradient(to right, #434343, #000000); 
+    
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
     z-index: 500;
 }
 
-.navbar-brand{
-    color: rgb(255 251 251 / 90%)!important;
+.navbar-brand {
+    color: rgb(255 251 251 / 90%) !important;
 }
 
-.nav-link{
-    color: white!important;
+.nav-link {
+    color: white !important;
 }
 
 a {
+    font-size: small!important;
     margin-left: 1vh;
     margin-right: 1vh;
 }
 
 #carouselMain img {
-    height: 60vh;
+    height: 94vh;
+}
+
+
+.btn-grad {
+    background-image: linear-gradient(to right, #232526 0%, #414345 51%, #232526 100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px rgba(4, 4, 4, 0.075);
+    border-radius: 4px;
+    border-color: black!important;
+    display: block;
+}
+
+.btn-grad:hover {
+    background-position: right center!important;
+    color: rgba(0, 0, 0, 0.214);
+    text-decoration: none;
 }
 
 .slide1 {
@@ -62,9 +92,50 @@ a {
 }
 
 .card-img-top {
-    max-height: 20vh !important;
+    max-height: 28vh;
 }
 
-.footerBc{
-    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%)!important;
+.img-thumbnail {
+    border: none!important;
+}
+
+.footerBc {
+    background: #000000; 
+    background: -webkit-linear-gradient(to right, #434343, #000000); 
+    background: linear-gradient(to right, #434343, #000000); 
+    
+}
+
+#contenedorClima {
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    color: white;
+    background: #000000;  
+    background: -webkit-linear-gradient(to right, #434343, #000000);  
+    background: linear-gradient(to right, #434343, #000000); 
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+}
+
+.carousel-caption {
+    padding-bottom: 35vh!important;
+}
+
+.text-white{
+    color: white;
+}
+
+#contenedorProductos img{
+    filter: grayscale();
+    transition: filter 1.4s ease-in-out;
+}
+
+#contenedorProductos:hover img{
+    filter: none;
+}
+
+#contenedorClima {
+    background-image: url(./img/climaback.jpg);
+    background-size: cover;
 }
