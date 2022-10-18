@@ -24,7 +24,7 @@ let carrito = [];
 
 // FUNCION VACIAR
 
-
+const toggleComprarButton = () => comprarCarrito.style.display = carrito.length === 0 ? "none" : "";
 const toggleVaciarButton = () => vaciarCarrito.style.display = carrito.length === 0 ? "none" : "";
 
 // FUNCION CANTIDADES , RECIBE UN TIPO
@@ -66,6 +66,17 @@ const modificarCantidad = (tipo, id, operacion) => {
     }
 }
 
+const dropdownCarrito = document.getElementById("dropdownCarrito");
+
+function actualizarCarritoSmall() {
+    dropdownCarrito.innerHTML = "";
+carrito.forEach((carrito) => {
+    let li = document.createElement("li");
+    li.classList = "dropdown-item";
+    li.innerText = `${carrito.nombre} - Cantidad:  ${carrito.cantidad} - $${carrito.precio}`
+    dropdownCarrito.appendChild(li)
+})
+}
 
 // CONTENEDOR DE PRODUCTOS
 
@@ -131,6 +142,8 @@ const agregarAlCarrito = (id) => {
     actualizarCarrito();
 }
 
+
+
 // CARRITO DOM
 
 const contenedorCarrito = document.getElementById("contenedorCarrito");
@@ -142,6 +155,7 @@ verCarrito.addEventListener("click", actualizarCarrito);
 
 function actualizarCarrito() {
     localStorage.setItem("carritoStorage", JSON.stringify(carrito));
+    toggleComprarButton();
     toggleVaciarButton();
     // vaciamos el contenedor
     contenedorCarrito.innerHTML = '';
@@ -181,7 +195,7 @@ function actualizarCarrito() {
 
     })
 
-
+    actualizarCarritoSmall();
     calcularTotalCompra();
 
 }
@@ -199,7 +213,11 @@ const eliminarDelCarrito = (id) => {
     actualizarCarrito();
 }
 
-// VACIAR CARRITO 
+// AGREGAR + VACIAR
+
+// COMPRAR CARRITO
+
+const comprarCarrito = document.getElementById("comprarCarrito");
 
 
 const vaciarCarrito = document.getElementById("vaciarCarrito");
@@ -265,11 +283,6 @@ function confirmCartAlert(texto) {
 }
 
 
-// COMPRAR CARRITO
-
-const comprarCarrito = document.getElementById("comprarCarrito");
-
-
 
 // API CLIMA
 
@@ -333,3 +346,9 @@ window.addEventListener('load', () => {
         })
     }
 })
+
+// DROPDWON CARRITO
+
+
+
+
