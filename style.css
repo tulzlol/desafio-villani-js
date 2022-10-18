@@ -92,7 +92,7 @@ a {
 }
 
 #contenedorClima {
-    height: 10vh;
+    height: 11vh;
     display: flex;
     justify-content: space-around;
     flex-direction: row;
